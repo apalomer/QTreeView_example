@@ -4,9 +4,9 @@ This project is aimed to help people understand in detail the stack overflow que
 
 It can be compiled like this:
 
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
+> $ mkdir build
+> $ cd build
+> $ cmake ..
+> $ make
 
 The binary will be created in the bin folder.
