@@ -106,7 +106,9 @@ QDataItem* QDataItemTree::addBatch(int number)
     QList<QVariant> d;
     d<<name;
     QDataItem* batch = new QDataItem(d,rootItem);
+    beginInsertRows(indexFromItem(rootItem), rootItem->childCount(), rootItem->childCount());
     rootItem->appendChild(batch);
+    endInsertRows();
     return batch;
 }
 
@@ -116,7 +118,9 @@ QDataItem* QDataItemTree::addBatchElement(int number, QDataItem* parent)
     QList<QVariant> d;
     d<<name;
     QDataItem* element = new QDataItem(d,parent);
+    beginInsertRows(indexFromItem(parent), parent->childCount(), parent->childCount());
     parent->appendChild(element);
+    endInsertRows();
     return element;
 }
 
@@ -126,6 +130,29 @@ QDataItem* QDataItemTree::addBatchElementChild(int number, QDataItem* parent)
     QList<QVariant> d;
     d<<name;
     QDataItem* element_child = new QDataItem(d,parent);
+    beginInsertRows(indexFromItem(parent), parent->childCount(), parent->childCount());
     parent->appendChild(element_child);
+    endInsertRows();
     return element_child;
+}
+
+QModelIndex QDataItemTree::indexFromItem(QDataItem *item){
+    if(item == rootItem || item == NULL)
+        return QModelIndex();
+    QDataItem *parent = item->parentItem();
+
+    QList<QDataItem *> parents;
+
+    while (parent && parent!=rootItem) {
+        parents<<parent;
+        parent = parent->parentItem();
+    }
+    QModelIndex ix;
+    parent = rootItem;
+
+    for(int i=0; i < parents.count(); i++){
+        ix = index(parents[i]->row(), 0, ix);
+    }
+    ix = index(ix.row(), 0, ix);
+    return ix;
 }

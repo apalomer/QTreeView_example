@@ -20,7 +20,6 @@ public:
 public slots:
 
     void load();
-    void load2();
 
 private:
 

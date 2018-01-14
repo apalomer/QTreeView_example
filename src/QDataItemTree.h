@@ -22,6 +22,8 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
+    QModelIndex indexFromItem(QDataItem *item);
+
     QDataItem* addBatch(int number);
     QDataItem* addBatchElement(int number, QDataItem* parent);
     QDataItem* addBatchElementChild(int number, QDataItem* parent);

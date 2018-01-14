@@ -16,21 +16,14 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QPushButton" name="addElementsLoad_pushButton">
+     <widget class="QPushButton" name="addElements_pushButton">
       <property name="text">
-       <string>Add Elements (load)</string>
+       <string>Add Elements</string>
       </property>
      </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QTreeView" name="treeView"/>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="addElementsLoad2_pushButton">
-      <property name="text">
-       <string>Add Elements (load2)</string>
-      </property>
-     </widget>
+     <widget class="QTreeView" name="treeView"/>
     </item>
    </layout>
   </widget>
